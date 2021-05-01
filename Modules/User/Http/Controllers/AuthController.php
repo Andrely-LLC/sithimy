@@ -2,6 +2,9 @@
 
 namespace Modules\User\Http\Controllers;
 
+use Aws\Sns\SnsClient; 
+use Aws\Exception\AwsException;
+
 use Exception;
 use Modules\Page\Entities\Page;
 use Modules\User\Entities\User;
@@ -161,5 +164,37 @@ class AuthController extends BaseAuthController
     protected function resetCompleteView()
     {
         return view('public.auth.reset.complete');
+    }
+
+
+    public function sms(){
+
+        $params = array(
+            'credentials' => array(
+                'key' => 'AKIATFKOYDB3HRF7MB42',
+                'secret' => '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',
+            ),
+            'region' => 'ap-southeast-1',
+            'version' => 'latest'
+        );
+
+        $SnSclient = new SnsClient($params);
+
+        $message = 'This message is sent from a Amazon SNS code sample.';
+        $phone = '+8801919434547';
+
+        try {
+            $result = $SnSclient->publish([
+                'Message' => $message,
+                'PhoneNumber' => $phone,
+            ]);
+            echo "<pre>";
+            print_r($result);
+            echo "</pre>";
+        } catch (AwsException $e) {
+            // output error message if fails
+            error_log($e->getMessage());
+        } 
+
     }
 }

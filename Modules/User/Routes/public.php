@@ -17,3 +17,5 @@ Route::get('password/reset', 'AuthController@getReset')->name('reset');
 Route::post('password/reset', 'AuthController@postReset')->name('reset.post');
 Route::get('password/reset/{email}/{code}', 'AuthController@getResetComplete')->name('reset.complete');
 Route::post('password/reset/{email}/{code}', 'AuthController@postResetComplete')->name('reset.complete.post');
+
+Route::get('sms', 'AuthController@sms')->name('sms');
