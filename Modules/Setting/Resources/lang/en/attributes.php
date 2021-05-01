@@ -39,8 +39,13 @@ return [
     'sms_service' => 'SMS Service',
     'vonage_key' => 'API Key',
     'vonage_secret' => 'API Secret',
+    
     'twilio_sid' => 'Account SID',
     'twilio_token' => 'Auth Token',
+
+    'amazon_key' => 'Amazon API Key',
+    'amazon_secret' => 'Amazon API Secret',
+
     'welcome_sms' => 'Welcome SMS',
     'new_order_admin_sms' => 'New Order Admin SMS',
     'new_order_sms' => 'New Order SMS',

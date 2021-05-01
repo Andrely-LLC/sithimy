@@ -145,6 +145,8 @@ class SettingTabs extends Tabs
                 'sms_service',
                 'vonage_key',
                 'vonage_secret',
+                'amazon_key',
+                'amazon_secret',
                 'twilio_sid',
                 'twilio_token',
                 'sms_order_statuses',
