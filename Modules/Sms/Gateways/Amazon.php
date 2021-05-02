@@ -15,7 +15,7 @@ class Amazon implements GatewayInterface
         return new SnsClient(array(
             'credentials' => array(
                 'key' => setting('amazon_key'),
-                'secret' => setting('amazon_key'),
+                'secret' => setting('amazon_secret'),
             ),
             'region' => 'ap-southeast-1',
             'version' => 'latest'
@@ -27,7 +27,7 @@ class Amazon implements GatewayInterface
     {
         try {
             
-            $this->client()->publish(array(
+            $result = $this->client()->publish(array(
             "MessageAttributes" => [
                         // You can put your senderId here. but first you have to verify the senderid by customer support of AWS then you can use your senderId.
                         // If you don't have senderId then you can comment senderId 
@@ -45,6 +45,7 @@ class Amazon implements GatewayInterface
         ));
 
         } catch (Exception $e) {
+            dd($e);
             throw new SmsException('Amazon: ' . $e->getMessage());
         }
     }

@@ -12,7 +12,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        \Modules\Order\Events\OrderStatusChanged::class => [
+            \Modules\Order\Events\OrderStatusChanged::class => [
             \Modules\Order\Listeners\SendOrderStatusChangedEmail::class,
             \Modules\Order\Listeners\SendOrderStatusChangedSms::class,
         ],

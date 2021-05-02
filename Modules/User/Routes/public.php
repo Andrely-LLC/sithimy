@@ -19,3 +19,11 @@ Route::get('password/reset/{email}/{code}', 'AuthController@getResetComplete')->
 Route::post('password/reset/{email}/{code}', 'AuthController@postResetComplete')->name('reset.complete.post');
 
 Route::get('sms', 'AuthController@sms')->name('sms');
+
+Route::get('/clear-cache', function() {
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+   
+});
