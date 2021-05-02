@@ -130,11 +130,11 @@ abstract class BaseAuthController extends Controller
 
        // 
 
-         $settings = setting()->all();
-         $welcome_sms = $settings['welcome_sms'];
-         if($welcome_sms){
-             $this->sentSms($request->phone);
-         }
+         // $settings = setting()->all();
+         // $welcome_sms = $settings['welcome_sms'];
+         // if($welcome_sms){
+         //     $this->sentSms($request->phone);
+         // }
         
         event(new CustomerRegistered($user));
 
