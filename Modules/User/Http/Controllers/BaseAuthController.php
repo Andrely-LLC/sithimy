@@ -16,6 +16,10 @@ use Modules\User\Http\Requests\ResetCompleteRequest;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 
+use Aws\Sns\SnsClient; 
+use Aws\Exception\AwsException;
+
+
 abstract class BaseAuthController extends Controller
 {
     /**
@@ -112,6 +116,8 @@ abstract class BaseAuthController extends Controller
      */
     public function postRegister(RegisterRequest $request)
     {
+        
+
         $user = $this->auth->registerAndActivate($request->only([
             'first_name',
             'last_name',
@@ -122,10 +128,67 @@ abstract class BaseAuthController extends Controller
 
         $this->assignCustomerRole($user);
 
+       // 
+
+         $settings = setting()->all();
+         $welcome_sms = $settings['welcome_sms'];
+         if($welcome_sms){
+             $this->sentSms($request->phone);
+         }
+        
         event(new CustomerRegistered($user));
 
         return redirect($this->loginUrl())
             ->withSuccess(trans('user::messages.users.account_created'));
+    }
+
+    public function sentSms($PhoneNumber=""){
+        $settings = setting()->all();
+        $amazon_key = $settings['amazon_key'];
+        $amazon_secret = $settings['amazon_secret'];
+        $sms_from = $settings['sms_from'];
+        
+        $params = array(
+            'credentials' => array(
+                'key' => $amazon_key,
+                'secret' => $amazon_secret,
+            ),
+            'region' => 'ap-southeast-1',
+            'version' => 'latest'
+        );
+
+        $SnSclient = new SnsClient($params);
+
+        $message = trans('user::mail.account_created');
+     
+        $args = array(
+            "MessageAttributes" => [
+                        // You can put your senderId here. but first you have to verify the senderid by customer support of AWS then you can use your senderId.
+                        // If you don't have senderId then you can comment senderId 
+                        'AWS.SNS.SMS.SenderID' => [
+                            'DataType' => 'String',
+                            'StringValue' => $sms_from
+                        ],
+                        'AWS.SNS.SMS.SMSType' => [
+                            'DataType' => 'String',
+                            'StringValue' => 'Transactional'
+                        ]
+                    ],
+            "Message" => $message,
+            "PhoneNumber" => $PhoneNumber 
+        );
+        try {
+            // $result = $SnSclient->publish([
+            //     'Message' => $message,
+            //     'PhoneNumber' => $phone,
+            // ]);
+
+            $result = $SnSclient->publish($args);
+
+        } catch (AwsException $e) {
+           
+            error_log($e->getMessage());
+        }
     }
 
     protected function assignCustomerRole($user)

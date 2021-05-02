@@ -38,7 +38,10 @@
             "FleetCart\\": "app/",
             "Modules\\": "Modules/",
             "Themes\\": "Themes/"
-        }
+        },
+        "files": [
+        "app/helpers.php"
+    ]
     },
     "scripts": {
         "post-root-package-install": [

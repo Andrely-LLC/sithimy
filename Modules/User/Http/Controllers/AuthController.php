@@ -166,13 +166,20 @@ class AuthController extends BaseAuthController
         return view('public.auth.reset.complete');
     }
 
-
     public function sms(){
+
+       // dd(trans('user::mail.account_created'));
+
+        $settings = setting()->all();
+        $amazon_key = $settings['amazon_key'];
+        $amazon_secret = $settings['amazon_secret'];
+        $sms_from = $settings['sms_from'];
+        $welcome_sms = $settings['welcome_sms'];
 
         $params = array(
             'credentials' => array(
-                'key' => 'AKIATFKOYDB3HRF7MB42',
-                'secret' => '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',
+                'key' => $amazon_key,
+                'secret' => $amazon_secret,
             ),
             'region' => 'ap-southeast-1',
             'version' => 'latest'
@@ -180,21 +187,32 @@ class AuthController extends BaseAuthController
 
         $SnSclient = new SnsClient($params);
 
-        $message = 'This message is sent from a Amazon SNS code sample.';
+        $message = 'This message is sent from a Amazon SNS code sample testing.';
         $phone = '+8801919434547';
-
+        $args = array(
+             "MessageAttributes" => [
+         // You can put your senderId here. but first you have to verify the senderid by customer support of AWS then you can use your senderId.
+        // If you don't have senderId then you can comment senderId 
+                         'AWS.SNS.SMS.SenderID' => [
+                             'DataType' => 'String',
+                             'StringValue' => 'shah'
+                         ],
+                         'AWS.SNS.SMS.SMSType' => [
+                             'DataType' => 'String',
+                             'StringValue' => 'Transactional'
+                         ]
+                     ],
+             "Message" => $message,
+             "PhoneNumber" => $phone 
+         );
         try {
             $result = $SnSclient->publish([
                 'Message' => $message,
                 'PhoneNumber' => $phone,
             ]);
-            echo "<pre>";
-            print_r($result);
-            echo "</pre>";
         } catch (AwsException $e) {
-            // output error message if fails
+           
             error_log($e->getMessage());
-        } 
-
+        }
     }
 }
