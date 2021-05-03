@@ -21,6 +21,34 @@
     <meta property="product:price:currency" content="{{ currency() }}">
 @endpush
 
+@push('styles')
+    <style>
+        .phone-support .btn-support {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            flex-direction: column;
+            background-color: #0267e1;
+            color: #fff;
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        .phone-support .btn-support:hover{
+            background-color: #013c82;
+            transition: 0.2s ease-in-out;
+        }
+
+        .phone-support {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .phone-support .btn-support span:first-child {
+            font-size: 16px;
+        }
+        
+    </style>
+@endpush
 @push('globals')
     <script>
         FleetCart.langs['storefront::product.reviews'] = '{{ trans("storefront::product.reviews") }}';
@@ -156,6 +184,14 @@
                                 </form>
                             </div>
 
+                            <!-- Phone support -->
+                            <div class="phone-support">
+                                <a class="btn btn-support" href="tel:0987654321">
+                                    <span>Tư vấn đặt hàng ngay</span>
+                                    <span><i class="las la-phone"></i> 0987654321</span>
+                                </a>
+                            </div>
+                            <!-- End Phone support -->
                             <div class="details-info-bottom">
                                 <ul class="list-inline additional-info">
                                     @unless (is_null($product->sku))

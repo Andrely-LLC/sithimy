@@ -12,5 +12,5 @@ mix.js(`${__dirname}/resources/assets/admin/js/main.js`, `${__dirname}/assets/ad
     .copy(`${__dirname}/resources/assets/public/images`, `${__dirname}/assets/public/images`)
     .then(() => {
         execSync(`npm run rtlcss ${__dirname}/assets/admin/css/storefront.css ${__dirname}/assets/admin/css/storefront.rtl.css`);
-        execSync(`npm run rtlcss ${__dirname}/assets/public/css/app.css ${__dirname}/assets/public/css/app.rtl.css`);
+        execSync(`npm run rtlcss ${__dirname}/assets/public/css/app.css ${__dirname}/assets/public/css/style.css ${__dirname}/assets/public/css/app.rtl.css`);
     });

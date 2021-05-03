@@ -1,2 +1,149 @@
-!function(e){var t={};function n(o){if(t[o])return t[o].exports;var a=t[o]={i:o,l:!1,exports:{}};return e[o].call(a.exports,a,a.exports,n),a.l=!0,a.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)n.d(o,a,function(t){return e[t]}.bind(null,a));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/",n(n.s=246)}({246:function(e,t,n){e.exports=n(284)},284:function(e,t,n){"use strict";function o(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}n.r(t);var a=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.downloadHtml=this.getDownloadHtml(t)}var t,n,a;return t=e,(n=[{key:"getDownloadHtml",value:function(e){var t=_.template($("#product-download-template").html());return $(t(e))}},{key:"render",value:function(){return this.attachEventListeners(),this.downloadHtml}},{key:"attachEventListeners",value:function(){var e=this;this.downloadHtml.find(".delete-row").on("click",(function(){e.downloadHtml.remove()})),this.downloadHtml.find(".btn-choose-file").on("click",(function(){(new MediaPicker).on("select",(function(t){e.downloadHtml.find(".download-name").val(t.filename),e.downloadHtml.find(".download-file").val(t.id)}))}))}}])&&o(t.prototype,n),a&&o(t,a),e}();function r(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}var l=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.downloadsCount=0,this.addDownloads(FleetCart.data["product.downloads"]),0===this.downloadsCount&&this.addDownload(),this.attachEventListeners(),this.makeDownloadsSortable()}var t,n,o;return t=e,(n=[{key:"addDownloads",value:function(e){var t=!0,n=!1,o=void 0;try{for(var a,r=e[Symbol.iterator]();!(t=(a=r.next()).done);t=!0){var l=a.value;this.addDownload(l)}}catch(e){n=!0,o=e}finally{try{t||null==r.return||r.return()}finally{if(n)throw o}}}},{key:"addDownload",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=new a({download:e});$("#downloads-wrapper").append(t.render()),this.downloadsCount++,window.admin.tooltip()}},{key:"attachEventListeners",value:function(){var e=this;$("#add-new-file").on("click",(function(){e.addDownload()}))}},{key:"makeDownloadsSortable",value:function(){Sortable.create(document.getElementById("downloads-wrapper"),{handle:".drag-icon",animation:150})}}])&&r(t.prototype,n),o&&r(t,o),e}();function i(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}new(function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.managerStock(),window.admin.removeSubmitButtonOffsetOn(["#images","#downloads","#attributes","#options","#related_products","#up_sells","#cross_sells","#reviews"]),$("#product-create-form, #product-edit-form").on("submit",this.submit)}var t,n,o;return t=e,(n=[{key:"managerStock",value:function(){$("#manage_stock").on("change",(function(e){"1"===e.currentTarget.value?$("#qty-field").removeClass("hide"):$("#qty-field").addClass("hide")}))}},{key:"submit",value:function(e){e.preventDefault(),DataTable.removeLengthFields(),window.form.appendHiddenInputs("#product-create-form, #product-edit-form","up_sells",DataTable.getSelectedIds("#up_sells .table")),window.form.appendHiddenInputs("#product-create-form, #product-edit-form","cross_sells",DataTable.getSelectedIds("#cross_sells .table")),window.form.appendHiddenInputs("#product-create-form, #product-edit-form","related_products",DataTable.getSelectedIds("#related_products .table")),e.currentTarget.submit()}}])&&i(t.prototype,n),o&&i(t,o),e}()),new l}});
-//# sourceMappingURL=product.js.map
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./Modules/Product/Resources/assets/admin/js/Download.js":
+/*!***************************************************************!*\
+  !*** ./Modules/Product/Resources/assets/admin/js/Download.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _default; });\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar _default =\n/*#__PURE__*/\nfunction () {\n  function _default(download) {\n    _classCallCheck(this, _default);\n\n    this.downloadHtml = this.getDownloadHtml(download);\n  }\n\n  _createClass(_default, [{\n    key: \"getDownloadHtml\",\n    value: function getDownloadHtml(download) {\n      var template = _.template($('#product-download-template').html());\n\n      return $(template(download));\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      this.attachEventListeners();\n      return this.downloadHtml;\n    }\n  }, {\n    key: \"attachEventListeners\",\n    value: function attachEventListeners() {\n      var _this = this;\n\n      this.downloadHtml.find('.delete-row').on('click', function () {\n        _this.downloadHtml.remove();\n      });\n      this.downloadHtml.find('.btn-choose-file').on('click', function () {\n        var picker = new MediaPicker();\n        picker.on('select', function (file) {\n          _this.downloadHtml.find('.download-name').val(file.filename);\n\n          _this.downloadHtml.find('.download-file').val(file.id);\n        });\n      });\n    }\n  }]);\n\n  return _default;\n}();\n\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9Nb2R1bGVzL1Byb2R1Y3QvUmVzb3VyY2VzL2Fzc2V0cy9hZG1pbi9qcy9Eb3dubG9hZC5qcz81OTlmIl0sIm5hbWVzIjpbImRvd25sb2FkIiwiZG93bmxvYWRIdG1sIiwiZ2V0RG93bmxvYWRIdG1sIiwidGVtcGxhdGUiLCJfIiwiJCIsImh0bWwiLCJhdHRhY2hFdmVudExpc3RlbmVycyIsImZpbmQiLCJvbiIsInJlbW92ZSIsInBpY2tlciIsIk1lZGlhUGlja2VyIiwiZmlsZSIsInZhbCIsImZpbGVuYW1lIiwiaWQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7O0FBQ0ksb0JBQVlBLFFBQVosRUFBc0I7QUFBQTs7QUFDbEIsU0FBS0MsWUFBTCxHQUFvQixLQUFLQyxlQUFMLENBQXFCRixRQUFyQixDQUFwQjtBQUNIOzs7O29DQUVlQSxRLEVBQVU7QUFDdEIsVUFBSUcsUUFBUSxHQUFHQyxDQUFDLENBQUNELFFBQUYsQ0FBV0UsQ0FBQyxDQUFDLDRCQUFELENBQUQsQ0FBZ0NDLElBQWhDLEVBQVgsQ0FBZjs7QUFFQSxhQUFPRCxDQUFDLENBQUNGLFFBQVEsQ0FBQ0gsUUFBRCxDQUFULENBQVI7QUFDSDs7OzZCQUVRO0FBQ0wsV0FBS08sb0JBQUw7QUFFQSxhQUFPLEtBQUtOLFlBQVo7QUFDSDs7OzJDQUVzQjtBQUFBOztBQUNuQixXQUFLQSxZQUFMLENBQWtCTyxJQUFsQixDQUF1QixhQUF2QixFQUFzQ0MsRUFBdEMsQ0FBeUMsT0FBekMsRUFBa0QsWUFBTTtBQUNwRCxhQUFJLENBQUNSLFlBQUwsQ0FBa0JTLE1BQWxCO0FBQ0gsT0FGRDtBQUlBLFdBQUtULFlBQUwsQ0FBa0JPLElBQWxCLENBQXVCLGtCQUF2QixFQUEyQ0MsRUFBM0MsQ0FBOEMsT0FBOUMsRUFBdUQsWUFBTTtBQUN6RCxZQUFJRSxNQUFNLEdBQUcsSUFBSUMsV0FBSixFQUFiO0FBRUFELGNBQU0sQ0FBQ0YsRUFBUCxDQUFVLFFBQVYsRUFBb0IsVUFBQ0ksSUFBRCxFQUFVO0FBQzFCLGVBQUksQ0FBQ1osWUFBTCxDQUFrQk8sSUFBbEIsQ0FBdUIsZ0JBQXZCLEVBQXlDTSxHQUF6QyxDQUE2Q0QsSUFBSSxDQUFDRSxRQUFsRDs7QUFDQSxlQUFJLENBQUNkLFlBQUwsQ0FBa0JPLElBQWxCLENBQXVCLGdCQUF2QixFQUF5Q00sR0FBekMsQ0FBNkNELElBQUksQ0FBQ0csRUFBbEQ7QUFDSCxTQUhEO0FBSUgsT0FQRDtBQVFIIiwiZmlsZSI6Ii4vTW9kdWxlcy9Qcm9kdWN0L1Jlc291cmNlcy9hc3NldHMvYWRtaW4vanMvRG93bmxvYWQuanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBjbGFzcyB7XG4gICAgY29uc3RydWN0b3IoZG93bmxvYWQpIHtcbiAgICAgICAgdGhpcy5kb3dubG9hZEh0bWwgPSB0aGlzLmdldERvd25sb2FkSHRtbChkb3dubG9hZCk7XG4gICAgfVxuXG4gICAgZ2V0RG93bmxvYWRIdG1sKGRvd25sb2FkKSB7XG4gICAgICAgIGxldCB0ZW1wbGF0ZSA9IF8udGVtcGxhdGUoJCgnI3Byb2R1Y3QtZG93bmxvYWQtdGVtcGxhdGUnKS5odG1sKCkpO1xuXG4gICAgICAgIHJldHVybiAkKHRlbXBsYXRlKGRvd25sb2FkKSk7XG4gICAgfVxuXG4gICAgcmVuZGVyKCkge1xuICAgICAgICB0aGlzLmF0dGFjaEV2ZW50TGlzdGVuZXJzKCk7XG5cbiAgICAgICAgcmV0dXJuIHRoaXMuZG93bmxvYWRIdG1sO1xuICAgIH1cblxuICAgIGF0dGFjaEV2ZW50TGlzdGVuZXJzKCkge1xuICAgICAgICB0aGlzLmRvd25sb2FkSHRtbC5maW5kKCcuZGVsZXRlLXJvdycpLm9uKCdjbGljaycsICgpID0+IHtcbiAgICAgICAgICAgIHRoaXMuZG93bmxvYWRIdG1sLnJlbW92ZSgpO1xuICAgICAgICB9KTtcblxuICAgICAgICB0aGlzLmRvd25sb2FkSHRtbC5maW5kKCcuYnRuLWNob29zZS1maWxlJykub24oJ2NsaWNrJywgKCkgPT4ge1xuICAgICAgICAgICAgbGV0IHBpY2tlciA9IG5ldyBNZWRpYVBpY2tlcigpO1xuXG4gICAgICAgICAgICBwaWNrZXIub24oJ3NlbGVjdCcsIChmaWxlKSA9PiB7XG4gICAgICAgICAgICAgICAgdGhpcy5kb3dubG9hZEh0bWwuZmluZCgnLmRvd25sb2FkLW5hbWUnKS52YWwoZmlsZS5maWxlbmFtZSk7XG4gICAgICAgICAgICAgICAgdGhpcy5kb3dubG9hZEh0bWwuZmluZCgnLmRvd25sb2FkLWZpbGUnKS52YWwoZmlsZS5pZCk7XG4gICAgICAgICAgICB9KTtcbiAgICAgICAgfSk7XG4gICAgfVxufVxuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./Modules/Product/Resources/assets/admin/js/Download.js\n");
+
+/***/ }),
+
+/***/ "./Modules/Product/Resources/assets/admin/js/Downloads.js":
+/*!****************************************************************!*\
+  !*** ./Modules/Product/Resources/assets/admin/js/Downloads.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _default; });\n/* harmony import */ var _Download__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Download */ \"./Modules/Product/Resources/assets/admin/js/Download.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\n\n\nvar _default =\n/*#__PURE__*/\nfunction () {\n  function _default() {\n    _classCallCheck(this, _default);\n\n    this.downloadsCount = 0;\n    this.addDownloads(FleetCart.data['product.downloads']);\n\n    if (this.downloadsCount === 0) {\n      this.addDownload();\n    }\n\n    this.attachEventListeners();\n    this.makeDownloadsSortable();\n  }\n\n  _createClass(_default, [{\n    key: \"addDownloads\",\n    value: function addDownloads(downloads) {\n      var _iteratorNormalCompletion = true;\n      var _didIteratorError = false;\n      var _iteratorError = undefined;\n\n      try {\n        for (var _iterator = downloads[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {\n          var attributes = _step.value;\n          this.addDownload(attributes);\n        }\n      } catch (err) {\n        _didIteratorError = true;\n        _iteratorError = err;\n      } finally {\n        try {\n          if (!_iteratorNormalCompletion && _iterator[\"return\"] != null) {\n            _iterator[\"return\"]();\n          }\n        } finally {\n          if (_didIteratorError) {\n            throw _iteratorError;\n          }\n        }\n      }\n    }\n  }, {\n    key: \"addDownload\",\n    value: function addDownload() {\n      var attributes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};\n      var download = new _Download__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n        download: attributes\n      });\n      $('#downloads-wrapper').append(download.render());\n      this.downloadsCount++;\n      window.admin.tooltip();\n    }\n  }, {\n    key: \"attachEventListeners\",\n    value: function attachEventListeners() {\n      var _this = this;\n\n      $('#add-new-file').on('click', function () {\n        _this.addDownload();\n      });\n    }\n  }, {\n    key: \"makeDownloadsSortable\",\n    value: function makeDownloadsSortable() {\n      Sortable.create(document.getElementById('downloads-wrapper'), {\n        handle: '.drag-icon',\n        animation: 150\n      });\n    }\n  }]);\n\n  return _default;\n}();\n\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9Nb2R1bGVzL1Byb2R1Y3QvUmVzb3VyY2VzL2Fzc2V0cy9hZG1pbi9qcy9Eb3dubG9hZHMuanM/NTIxZCJdLCJuYW1lcyI6WyJkb3dubG9hZHNDb3VudCIsImFkZERvd25sb2FkcyIsIkZsZWV0Q2FydCIsImRhdGEiLCJhZGREb3dubG9hZCIsImF0dGFjaEV2ZW50TGlzdGVuZXJzIiwibWFrZURvd25sb2Fkc1NvcnRhYmxlIiwiZG93bmxvYWRzIiwiYXR0cmlidXRlcyIsImRvd25sb2FkIiwiRG93bmxvYWQiLCIkIiwiYXBwZW5kIiwicmVuZGVyIiwid2luZG93IiwiYWRtaW4iLCJ0b29sdGlwIiwib24iLCJTb3J0YWJsZSIsImNyZWF0ZSIsImRvY3VtZW50IiwiZ2V0RWxlbWVudEJ5SWQiLCJoYW5kbGUiLCJhbmltYXRpb24iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFBOzs7OztBQUdJLHNCQUFjO0FBQUE7O0FBQ1YsU0FBS0EsY0FBTCxHQUFzQixDQUF0QjtBQUVBLFNBQUtDLFlBQUwsQ0FBa0JDLFNBQVMsQ0FBQ0MsSUFBVixDQUFlLG1CQUFmLENBQWxCOztBQUVBLFFBQUksS0FBS0gsY0FBTCxLQUF3QixDQUE1QixFQUErQjtBQUMzQixXQUFLSSxXQUFMO0FBQ0g7O0FBRUQsU0FBS0Msb0JBQUw7QUFDQSxTQUFLQyxxQkFBTDtBQUNIOzs7O2lDQUVZQyxTLEVBQVc7QUFBQTtBQUFBO0FBQUE7O0FBQUE7QUFDcEIsNkJBQXVCQSxTQUF2Qiw4SEFBa0M7QUFBQSxjQUF6QkMsVUFBeUI7QUFDOUIsZUFBS0osV0FBTCxDQUFpQkksVUFBakI7QUFDSDtBQUhtQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBSXZCOzs7a0NBRTRCO0FBQUEsVUFBakJBLFVBQWlCLHVFQUFKLEVBQUk7QUFDekIsVUFBSUMsUUFBUSxHQUFHLElBQUlDLGlEQUFKLENBQWE7QUFBRUQsZ0JBQVEsRUFBRUQ7QUFBWixPQUFiLENBQWY7QUFFQUcsT0FBQyxDQUFDLG9CQUFELENBQUQsQ0FBd0JDLE1BQXhCLENBQStCSCxRQUFRLENBQUNJLE1BQVQsRUFBL0I7QUFFQSxXQUFLYixjQUFMO0FBQ0FjLFlBQU0sQ0FBQ0MsS0FBUCxDQUFhQyxPQUFiO0FBQ0g7OzsyQ0FFc0I7QUFBQTs7QUFDbkJMLE9BQUMsQ0FBQyxlQUFELENBQUQsQ0FBbUJNLEVBQW5CLENBQXNCLE9BQXRCLEVBQStCLFlBQU07QUFDakMsYUFBSSxDQUFDYixXQUFMO0FBQ0gsT0FGRDtBQUdIOzs7NENBRXVCO0FBQ3BCYyxjQUFRLENBQUNDLE1BQVQsQ0FBZ0JDLFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QixtQkFBeEIsQ0FBaEIsRUFBOEQ7QUFDMURDLGNBQU0sRUFBRSxZQURrRDtBQUUxREMsaUJBQVMsRUFBRTtBQUYrQyxPQUE5RDtBQUlIIiwiZmlsZSI6Ii4vTW9kdWxlcy9Qcm9kdWN0L1Jlc291cmNlcy9hc3NldHMvYWRtaW4vanMvRG93bmxvYWRzLmpzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IERvd25sb2FkIGZyb20gJy4vRG93bmxvYWQnO1xuXG5leHBvcnQgZGVmYXVsdCBjbGFzcyB7XG4gICAgY29uc3RydWN0b3IoKSB7XG4gICAgICAgIHRoaXMuZG93bmxvYWRzQ291bnQgPSAwO1xuXG4gICAgICAgIHRoaXMuYWRkRG93bmxvYWRzKEZsZWV0Q2FydC5kYXRhWydwcm9kdWN0LmRvd25sb2FkcyddKTtcblxuICAgICAgICBpZiAodGhpcy5kb3dubG9hZHNDb3VudCA9PT0gMCkge1xuICAgICAgICAgICAgdGhpcy5hZGREb3dubG9hZCgpO1xuICAgICAgICB9XG5cbiAgICAgICAgdGhpcy5hdHRhY2hFdmVudExpc3RlbmVycygpO1xuICAgICAgICB0aGlzLm1ha2VEb3dubG9hZHNTb3J0YWJsZSgpO1xuICAgIH1cblxuICAgIGFkZERvd25sb2Fkcyhkb3dubG9hZHMpIHtcbiAgICAgICAgZm9yIChsZXQgYXR0cmlidXRlcyBvZiBkb3dubG9hZHMpIHtcbiAgICAgICAgICAgIHRoaXMuYWRkRG93bmxvYWQoYXR0cmlidXRlcyk7XG4gICAgICAgIH1cbiAgICB9XG5cbiAgICBhZGREb3dubG9hZChhdHRyaWJ1dGVzID0ge30pIHtcbiAgICAgICAgbGV0IGRvd25sb2FkID0gbmV3IERvd25sb2FkKHsgZG93bmxvYWQ6IGF0dHJpYnV0ZXMgfSk7XG5cbiAgICAgICAgJCgnI2Rvd25sb2Fkcy13cmFwcGVyJykuYXBwZW5kKGRvd25sb2FkLnJlbmRlcigpKTtcblxuICAgICAgICB0aGlzLmRvd25sb2Fkc0NvdW50Kys7XG4gICAgICAgIHdpbmRvdy5hZG1pbi50b29sdGlwKCk7XG4gICAgfVxuXG4gICAgYXR0YWNoRXZlbnRMaXN0ZW5lcnMoKSB7XG4gICAgICAgICQoJyNhZGQtbmV3LWZpbGUnKS5vbignY2xpY2snLCAoKSA9PiB7XG4gICAgICAgICAgICB0aGlzLmFkZERvd25sb2FkKCk7XG4gICAgICAgIH0pO1xuICAgIH1cblxuICAgIG1ha2VEb3dubG9hZHNTb3J0YWJsZSgpIHtcbiAgICAgICAgU29ydGFibGUuY3JlYXRlKGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdkb3dubG9hZHMtd3JhcHBlcicpLCB7XG4gICAgICAgICAgICBoYW5kbGU6ICcuZHJhZy1pY29uJyxcbiAgICAgICAgICAgIGFuaW1hdGlvbjogMTUwLFxuICAgICAgICB9KTtcbiAgICB9XG59XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./Modules/Product/Resources/assets/admin/js/Downloads.js\n");
+
+/***/ }),
+
+/***/ "./Modules/Product/Resources/assets/admin/js/ProductForm.js":
+/*!******************************************************************!*\
+  !*** ./Modules/Product/Resources/assets/admin/js/ProductForm.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _default; });\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar _default =\n/*#__PURE__*/\nfunction () {\n  function _default() {\n    _classCallCheck(this, _default);\n\n    this.managerStock();\n    window.admin.removeSubmitButtonOffsetOn(['#images', '#downloads', '#attributes', '#options', '#related_products', '#up_sells', '#cross_sells', '#reviews']);\n    $('#product-create-form, #product-edit-form').on('submit', this.submit);\n  }\n\n  _createClass(_default, [{\n    key: \"managerStock\",\n    value: function managerStock() {\n      $('#manage_stock').on('change', function (e) {\n        if (e.currentTarget.value === '1') {\n          $('#qty-field').removeClass('hide');\n        } else {\n          $('#qty-field').addClass('hide');\n        }\n      });\n    }\n  }, {\n    key: \"submit\",\n    value: function submit(e) {\n      e.preventDefault();\n      DataTable.removeLengthFields();\n      window.form.appendHiddenInputs('#product-create-form, #product-edit-form', 'up_sells', DataTable.getSelectedIds('#up_sells .table'));\n      window.form.appendHiddenInputs('#product-create-form, #product-edit-form', 'cross_sells', DataTable.getSelectedIds('#cross_sells .table'));\n      window.form.appendHiddenInputs('#product-create-form, #product-edit-form', 'related_products', DataTable.getSelectedIds('#related_products .table'));\n      e.currentTarget.submit();\n    }\n  }]);\n\n  return _default;\n}();\n\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9Nb2R1bGVzL1Byb2R1Y3QvUmVzb3VyY2VzL2Fzc2V0cy9hZG1pbi9qcy9Qcm9kdWN0Rm9ybS5qcz9iZWRkIl0sIm5hbWVzIjpbIm1hbmFnZXJTdG9jayIsIndpbmRvdyIsImFkbWluIiwicmVtb3ZlU3VibWl0QnV0dG9uT2Zmc2V0T24iLCIkIiwib24iLCJzdWJtaXQiLCJlIiwiY3VycmVudFRhcmdldCIsInZhbHVlIiwicmVtb3ZlQ2xhc3MiLCJhZGRDbGFzcyIsInByZXZlbnREZWZhdWx0IiwiRGF0YVRhYmxlIiwicmVtb3ZlTGVuZ3RoRmllbGRzIiwiZm9ybSIsImFwcGVuZEhpZGRlbklucHV0cyIsImdldFNlbGVjdGVkSWRzIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7OztBQUNJLHNCQUFjO0FBQUE7O0FBQ1YsU0FBS0EsWUFBTDtBQUVBQyxVQUFNLENBQUNDLEtBQVAsQ0FBYUMsMEJBQWIsQ0FBd0MsQ0FDcEMsU0FEb0MsRUFDekIsWUFEeUIsRUFDWCxhQURXLEVBQ0ksVUFESixFQUVwQyxtQkFGb0MsRUFFZixXQUZlLEVBRUYsY0FGRSxFQUVjLFVBRmQsQ0FBeEM7QUFLQUMsS0FBQyxDQUFDLDBDQUFELENBQUQsQ0FBOENDLEVBQTlDLENBQWlELFFBQWpELEVBQTJELEtBQUtDLE1BQWhFO0FBQ0g7Ozs7bUNBRWM7QUFDWEYsT0FBQyxDQUFDLGVBQUQsQ0FBRCxDQUFtQkMsRUFBbkIsQ0FBc0IsUUFBdEIsRUFBZ0MsVUFBQ0UsQ0FBRCxFQUFPO0FBQ25DLFlBQUlBLENBQUMsQ0FBQ0MsYUFBRixDQUFnQkMsS0FBaEIsS0FBMEIsR0FBOUIsRUFBbUM7QUFDL0JMLFdBQUMsQ0FBQyxZQUFELENBQUQsQ0FBZ0JNLFdBQWhCLENBQTRCLE1BQTVCO0FBQ0gsU0FGRCxNQUVPO0FBQ0hOLFdBQUMsQ0FBQyxZQUFELENBQUQsQ0FBZ0JPLFFBQWhCLENBQXlCLE1BQXpCO0FBQ0g7QUFDSixPQU5EO0FBT0g7OzsyQkFFTUosQyxFQUFHO0FBQ05BLE9BQUMsQ0FBQ0ssY0FBRjtBQUVBQyxlQUFTLENBQUNDLGtCQUFWO0FBRUFiLFlBQU0sQ0FBQ2MsSUFBUCxDQUFZQyxrQkFBWixDQUErQiwwQ0FBL0IsRUFBMkUsVUFBM0UsRUFBdUZILFNBQVMsQ0FBQ0ksY0FBVixDQUF5QixrQkFBekIsQ0FBdkY7QUFDQWhCLFlBQU0sQ0FBQ2MsSUFBUCxDQUFZQyxrQkFBWixDQUErQiwwQ0FBL0IsRUFBMkUsYUFBM0UsRUFBMEZILFNBQVMsQ0FBQ0ksY0FBVixDQUF5QixxQkFBekIsQ0FBMUY7QUFDQWhCLFlBQU0sQ0FBQ2MsSUFBUCxDQUFZQyxrQkFBWixDQUErQiwwQ0FBL0IsRUFBMkUsa0JBQTNFLEVBQStGSCxTQUFTLENBQUNJLGNBQVYsQ0FBeUIsMEJBQXpCLENBQS9GO0FBRUFWLE9BQUMsQ0FBQ0MsYUFBRixDQUFnQkYsTUFBaEI7QUFDSCIsImZpbGUiOiIuL01vZHVsZXMvUHJvZHVjdC9SZXNvdXJjZXMvYXNzZXRzL2FkbWluL2pzL1Byb2R1Y3RGb3JtLmpzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgY2xhc3Mge1xuICAgIGNvbnN0cnVjdG9yKCkge1xuICAgICAgICB0aGlzLm1hbmFnZXJTdG9jaygpO1xuXG4gICAgICAgIHdpbmRvdy5hZG1pbi5yZW1vdmVTdWJtaXRCdXR0b25PZmZzZXRPbihbXG4gICAgICAgICAgICAnI2ltYWdlcycsICcjZG93bmxvYWRzJywgJyNhdHRyaWJ1dGVzJywgJyNvcHRpb25zJyxcbiAgICAgICAgICAgICcjcmVsYXRlZF9wcm9kdWN0cycsICcjdXBfc2VsbHMnLCAnI2Nyb3NzX3NlbGxzJywgJyNyZXZpZXdzJyxcbiAgICAgICAgXSk7XG5cbiAgICAgICAgJCgnI3Byb2R1Y3QtY3JlYXRlLWZvcm0sICNwcm9kdWN0LWVkaXQtZm9ybScpLm9uKCdzdWJtaXQnLCB0aGlzLnN1Ym1pdCk7XG4gICAgfVxuXG4gICAgbWFuYWdlclN0b2NrKCkge1xuICAgICAgICAkKCcjbWFuYWdlX3N0b2NrJykub24oJ2NoYW5nZScsIChlKSA9PiB7XG4gICAgICAgICAgICBpZiAoZS5jdXJyZW50VGFyZ2V0LnZhbHVlID09PSAnMScpIHtcbiAgICAgICAgICAgICAgICAkKCcjcXR5LWZpZWxkJykucmVtb3ZlQ2xhc3MoJ2hpZGUnKTtcbiAgICAgICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICAgICAgJCgnI3F0eS1maWVsZCcpLmFkZENsYXNzKCdoaWRlJyk7XG4gICAgICAgICAgICB9XG4gICAgICAgIH0pO1xuICAgIH1cblxuICAgIHN1Ym1pdChlKSB7XG4gICAgICAgIGUucHJldmVudERlZmF1bHQoKTtcblxuICAgICAgICBEYXRhVGFibGUucmVtb3ZlTGVuZ3RoRmllbGRzKCk7XG5cbiAgICAgICAgd2luZG93LmZvcm0uYXBwZW5kSGlkZGVuSW5wdXRzKCcjcHJvZHVjdC1jcmVhdGUtZm9ybSwgI3Byb2R1Y3QtZWRpdC1mb3JtJywgJ3VwX3NlbGxzJywgRGF0YVRhYmxlLmdldFNlbGVjdGVkSWRzKCcjdXBfc2VsbHMgLnRhYmxlJykpO1xuICAgICAgICB3aW5kb3cuZm9ybS5hcHBlbmRIaWRkZW5JbnB1dHMoJyNwcm9kdWN0LWNyZWF0ZS1mb3JtLCAjcHJvZHVjdC1lZGl0LWZvcm0nLCAnY3Jvc3Nfc2VsbHMnLCBEYXRhVGFibGUuZ2V0U2VsZWN0ZWRJZHMoJyNjcm9zc19zZWxscyAudGFibGUnKSk7XG4gICAgICAgIHdpbmRvdy5mb3JtLmFwcGVuZEhpZGRlbklucHV0cygnI3Byb2R1Y3QtY3JlYXRlLWZvcm0sICNwcm9kdWN0LWVkaXQtZm9ybScsICdyZWxhdGVkX3Byb2R1Y3RzJywgRGF0YVRhYmxlLmdldFNlbGVjdGVkSWRzKCcjcmVsYXRlZF9wcm9kdWN0cyAudGFibGUnKSk7XG5cbiAgICAgICAgZS5jdXJyZW50VGFyZ2V0LnN1Ym1pdCgpO1xuICAgIH1cbn1cbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./Modules/Product/Resources/assets/admin/js/ProductForm.js\n");
+
+/***/ }),
+
+/***/ "./Modules/Product/Resources/assets/admin/js/main.js":
+/*!***********************************************************!*\
+  !*** ./Modules/Product/Resources/assets/admin/js/main.js ***!
+  \***********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Downloads__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Downloads */ \"./Modules/Product/Resources/assets/admin/js/Downloads.js\");\n/* harmony import */ var _ProductForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductForm */ \"./Modules/Product/Resources/assets/admin/js/ProductForm.js\");\n\n\nnew _ProductForm__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nnew _Downloads__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9Nb2R1bGVzL1Byb2R1Y3QvUmVzb3VyY2VzL2Fzc2V0cy9hZG1pbi9qcy9tYWluLmpzP2UwN2UiXSwibmFtZXMiOlsiUHJvZHVjdEZvcm0iLCJEb3dubG9hZHMiXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQ0E7QUFFQSxJQUFJQSxvREFBSjtBQUNBLElBQUlDLGtEQUFKIiwiZmlsZSI6Ii4vTW9kdWxlcy9Qcm9kdWN0L1Jlc291cmNlcy9hc3NldHMvYWRtaW4vanMvbWFpbi5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBEb3dubG9hZHMgZnJvbSAnLi9Eb3dubG9hZHMnO1xuaW1wb3J0IFByb2R1Y3RGb3JtIGZyb20gJy4vUHJvZHVjdEZvcm0nO1xuXG5uZXcgUHJvZHVjdEZvcm0oKTtcbm5ldyBEb3dubG9hZHMoKTtcbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./Modules/Product/Resources/assets/admin/js/main.js\n");
+
+/***/ }),
+
+/***/ 12:
+/*!*****************************************************************!*\
+  !*** multi ./Modules/Product/Resources/assets/admin/js/main.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /Users/nnhshu/workspace/sithimy/Modules/Product/Resources/assets/admin/js/main.js */"./Modules/Product/Resources/assets/admin/js/main.js");
+
+
+/***/ })
+
+/******/ });

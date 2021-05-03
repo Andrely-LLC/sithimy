@@ -14,7 +14,7 @@ export default {
     data() {
         return {
             form: {
-                customer_email: this.customerEmail,
+                customer_email: null,
                 customer_phone: this.customerPhone,
                 billing: {},
                 shipping: {},
